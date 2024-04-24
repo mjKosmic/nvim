@@ -1,0 +1,1 @@
+require('mjKosmic.plugins.lazy')
