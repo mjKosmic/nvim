@@ -1,3 +1,7 @@
+
+-- Core
+vim.keymap.set('n', '<ESC>', '<ESC><CMD>nohl<CR>')
+
 -- Lazy
 vim.keymap.set('n', '<leader>L', ':Lazy<CR>')
 
