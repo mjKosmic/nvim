@@ -3,7 +3,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- tabs
-vim.opt.tabstop = 8
+vim.opt.tabstop = 4
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.expandtab = false
