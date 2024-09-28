@@ -48,6 +48,13 @@ config = function()
 	},
 	completion = { completeopt = 'menu,menuone,noinsert' },
 
+	formatting = {
+	    -- Truncate completion options to 50 characters to avoid excessively wide completion windows
+	    format = function(entry, vim_item) 
+		vim_item.abbr = string.sub(vim_item.abbr, 1, 40)
+		return vim_item
+	    end
+	},
 	-- For an understanding of why these mappings were
 	-- chosen, you will need to read `:help ins-completion`
 	--
