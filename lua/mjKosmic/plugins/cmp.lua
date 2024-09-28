@@ -46,7 +46,7 @@ config = function()
 	    completion = cmp.config.window.bordered(),
 	    documentation = cmp.config.window.bordered()
 	},
-	completion = { completeopt = 'menu,menuone,noinsert' },
+	completion = { completeopt = 'menu, menuone, noinsert'},
 
 	formatting = {
 	    -- Truncate completion options to 50 characters to avoid excessively wide completion windows
