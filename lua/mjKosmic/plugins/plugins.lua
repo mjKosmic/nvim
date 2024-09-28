@@ -8,7 +8,9 @@ return {
   require('mjKosmic.plugins.gitsigns'),
   require('mjKosmic.plugins.comment'),
   require('mjKosmic.plugins.sleuth'),
-  --require('mjKosmic.plugins.mason'),
-  require('mjKosmic.plugins.lsp'),
-  require('mjKosmic.plugins.cmp')
+  require('mjKosmic.plugins.cmp'),
+  require('mjKosmic.plugins.lspconfig'),
+  require('mjKosmic.plugins.mason'),
+  require('mjKosmic.plugins.xcodebuild'),
+  require('mjKosmic.plugins.dressing'),
 }
