@@ -16,7 +16,6 @@ dependencies = {
 	end)(),
 	dependencies = {
 	    'saadparwaiz1/cmp_luasnip',
-	    'rafamadriz/friendly-snippets' 
 	},
     },
 
@@ -35,6 +34,17 @@ config = function()
     local luasnip = require 'luasnip'
     luasnip.config.setup {}
 
+    -- A custom ordering for completion LSP completion entries, by kind. LSP entry kinds are defined in the LSP protocol.
+    -- They can be found at https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_completion
+    local kind_mapper = require('cmp.types').lsp.CompletionItemKind
+    local preferred_kinds = {
+	Constructor = 1,
+	Property = 2,
+	Function = 3,
+	Method = 4,
+	Variable = 5,
+
+    }
 
     cmp.setup {
 	snippet = {
@@ -47,6 +57,26 @@ config = function()
 	    documentation = cmp.config.window.bordered()
 	},
 	completion = { completeopt = 'menu, menuone, noinsert'},
+	matching = {
+	    disallow_fuzzy_matching = false,
+	    -- disallow_partial_matching = false
+	},
+	-- sorting the completion results
+	sorting = {
+		comparators = {
+		    cmp.config.compare.exact,
+		    cmp.config.compare.scopes,
+		    -- Custom comparator to rank our preferred LSP entry kinds 
+		    function(entry1, entry2) 
+			local kind1 = preferred_kinds[kind_mapper[entry1:get_kind()]] or 100
+			local kind2 = preferred_kinds[kind_mapper[entry2:get_kind()]] or 100
+
+			if kind1 < kind2 then
+			    return true
+			end
+		    end,
+		},
+	},
 
 	formatting = {
 	    -- Truncate completion options to 50 characters to avoid excessively wide completion windows
@@ -124,7 +154,7 @@ config = function()
 	},
 	sources = {
 	    { name = 'nvim_lsp' },
-	    { name = 'luasnip', --[[ option = { show_autosnippets = true } --]] },
+	    { name = 'luasnip', option = { show_autosnippets = true }  },
 	    { name = 'path' },
 	    { name = 'buffer' }
 	},
