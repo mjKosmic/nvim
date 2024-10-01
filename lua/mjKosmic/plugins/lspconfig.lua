@@ -92,5 +92,13 @@ return {
 		"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp"
 	    }
 	})
+
+	lspconfig["rust_analyzer"].setup {
+	    capabilities = capabilities
+	}
+
+	lspconfig["lua_ls"].setup({
+	    capabilities = capabilities
+	})
     end
 }
