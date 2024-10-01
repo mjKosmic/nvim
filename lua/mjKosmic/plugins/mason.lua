@@ -3,6 +3,7 @@ return {
     dependencies = {
 	"williamboman/mason.nvim",
 	"WhoIsSethDaniel/mason-tool-installer.nvim",
+	"j-hui/fidget.nvim",
     },
     config = function()
 	-- import Mason
@@ -14,6 +15,9 @@ return {
 	-- import Mason Tool Installer
 	local mason_tool_installer = require('mason-tool-installer')
 
+
+	-- Setup Fidget
+	require('fidget').setup{}
 
 	-- enable Mason and configure icons
 	mason.setup({
@@ -54,7 +58,7 @@ return {
 	    --   - true: All servers set up via lspconfig are automatically installed.
 	    --   - { exclude: string[] }: All servers set up via lspconfig, except the ones provided in the list, are automatically installed.
 	    --       Example: automatic_installation = { exclude = { "rust_analyzer", "solargraph" } }
-	    automatic_installation = true
+	    automatic_installation = true,
 	})
 
 	-- enable auto updating of linters, LSPs, and DAPs with Mason Tool Installer
@@ -63,6 +67,5 @@ return {
 	    run_on_start = true,
 	    start_delay = 3000, -- 3 second delay
 	})
-
     end,
 }
