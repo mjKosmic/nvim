@@ -1,4 +1,4 @@
-local configure = function(style) 
+local configureTokyoNight = function(style) 
     require("tokyonight").setup({
 	-- your configuration comes here
 	-- or leave it empty to use the default settings
@@ -38,22 +38,45 @@ local configure = function(style)
     vim.cmd[[colorscheme tokyonight]]
 end
 
+-- return {
+--     'folke/tokyonight.nvim',
+--     priority = 1000,
+--     config = function() 
+-- 	local styles = { "storm", "night", "day", "moon" }
+-- 	local styleIndex = 1
+-- 	local style = styles[styleIndex]
+-- 	vim.keymap.set('n', '<leader>00', function()
+-- 	    styleIndex = styleIndex + 1
+-- 	    if styleIndex > #styles then
+-- 		styleIndex = 1
+-- 	    end
+-- 	    style = styles[styleIndex]
+-- 	    configure(style)
+-- 	end, {desc = "Change colorscheme style"})
+-- 	
+-- 	configureTokyoNight(style)
+--     end
+-- }
+
 return {
-    'folke/tokyonight.nvim',
-    priority = 1000,
-    config = function() 
-	local styles = { "storm", "night", "day", "moon" }
-	local styleIndex = 1
-	local style = styles[styleIndex]
-	vim.keymap.set('n', '<leader>00', function()
-	    styleIndex = styleIndex + 1
-	    if styleIndex > #styles then
-		styleIndex = 1
-	    end
-	    style = styles[styleIndex]
-	    configure(style)
-	end, {desc = "Change colorscheme style"})
-	
-	configure(style)
-    end
+    "tiagovla/tokyodark.nvim",
+    opts = {
+        -- custom options here
+    },
+    config = function(_, opts)
+        require("tokyodark").setup(opts) -- calling setup is optional
+        vim.cmd [[colorscheme tokyodark]]
+    end,
 }
+
+
+
+
+
+
+
+
+
+
+
+
