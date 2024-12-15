@@ -1,14 +1,9 @@
 return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-	"hrsh7th/cmp-nvim-lsp"
-    },
     config = function()
 	-- import LSP Config
 	local lspconfig = require('lspconfig')
-	-- import CMP NVIM LSP
-	local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
 	vim.api.nvim_create_autocmd('LspAttach', {
 	    group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
@@ -81,9 +76,6 @@ return {
 		-- end
 	    end,
 	})
-
-	-- used to enable auto completion (assign to every LSP server config)
-	local capabilities = cmp_nvim_lsp.default_capabilities()
 
 	lspconfig["sourcekit"].setup({
 	    capabilities = capabilities,
