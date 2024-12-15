@@ -5,6 +5,7 @@ dependencies = {
     -- Snippet Engine & its associated nvim-cmp source
     {
 	'L3MON4D3/LuaSnip',
+	'rcarriga/cmp-dap',
 	build = (function()
 	    -- Build Step is needed for regex support in snippets.
 	    -- This step is not supported in many windows environments.
@@ -47,6 +48,10 @@ config = function()
     }
 
     cmp.setup {
+	enabled = function()
+	    return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
+	    or require("cmp_dap").is_dap_buffer()
+	end,
 	snippet = {
 	    expand = function(args)
 		luasnip.lsp_expand(args.body)
@@ -159,5 +164,12 @@ config = function()
 	    { name = 'buffer' }
 	},
     }
+
+    -- set up auto complete for DAP REPL
+    require("cmp").setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+	sources = {
+	    { name = "dap" },
+	},
+    })
 end,
 }

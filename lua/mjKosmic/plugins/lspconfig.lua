@@ -4,10 +4,9 @@ return {
     dependencies = {
 	"hrsh7th/cmp-nvim-lsp"
     },
-    config = function() 
+    config = function()
 	-- import LSP Config
 	local lspconfig = require('lspconfig')
-	
 	-- import CMP NVIM LSP
 	local cmp_nvim_lsp = require('cmp_nvim_lsp')
 

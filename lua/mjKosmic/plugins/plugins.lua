@@ -12,5 +12,6 @@ return {
   require('mjKosmic.plugins.lspconfig'),
   require('mjKosmic.plugins.mason'),
   require('mjKosmic.plugins.xcodebuild'),
+  require('mjKosmic.plugins.dap'),
   require('mjKosmic.plugins.dressing'),
 }
