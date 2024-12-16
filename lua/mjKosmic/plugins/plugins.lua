@@ -1,6 +1,8 @@
 return {
   require('mjKosmic.plugins.statusline'),
   require('mjKosmic.plugins.colorscheme'),
+  require('mjKosmic.plugins.fidget'),
+  require('mjKosmic.plugins.notify'),
   require('mjKosmic.plugins.oil'),
   require('mjKosmic.plugins.telescope'),
   require('mjKosmic.plugins.treesitter'),

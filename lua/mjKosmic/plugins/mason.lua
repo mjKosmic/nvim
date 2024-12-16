@@ -3,7 +3,6 @@ return {
     dependencies = {
 	"williamboman/mason.nvim",
 	"WhoIsSethDaniel/mason-tool-installer.nvim",
-	"j-hui/fidget.nvim",
     },
     config = function()
 	-- import Mason
@@ -14,10 +13,6 @@ return {
 
 	-- import Mason Tool Installer
 	local mason_tool_installer = require('mason-tool-installer')
-
-
-	-- Setup Fidget
-	require('fidget').setup{}
 
 	-- enable Mason and configure icons
 	mason.setup({
