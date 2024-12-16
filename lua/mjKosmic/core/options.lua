@@ -6,7 +6,7 @@ vim.opt.relativenumber = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
-vim.opt.expandtab = false
+vim.opt.expandtab = true
 
 -- scroll offset
 vim.opt.scrolloff = 15
