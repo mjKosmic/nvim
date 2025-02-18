@@ -4,9 +4,11 @@ vim.opt.relativenumber = true
 
 -- tabs
 vim.opt.tabstop = 4
-vim.opt.shiftwidth = 2
-vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 0
 vim.opt.expandtab = true
+vim.opt.smarttab = false
+vim.opt.smartindent = true
 
 -- scroll offset
 vim.opt.scrolloff = 15
