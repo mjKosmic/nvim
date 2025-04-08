@@ -1,4 +1,3 @@
-
 -- Core
 vim.keymap.set('n', '<ESC>', '<ESC><CMD>nohl<CR>')
 

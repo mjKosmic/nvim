@@ -1,5 +1,16 @@
 -- set the leader
 vim.g.mapleader = ' '
 
-require('mjKosmic.plugins')
-require('mjKosmic.core')
+require('plugins')
+require('commands')
+require('options')
+require('keybinds')
+
+vim.lsp.enable(
+  {
+	'luals',
+	'rust-analyzer',
+	'clangd',
+	'sourcekit'
+  }
+)

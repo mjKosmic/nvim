@@ -6,7 +6,8 @@ return {
 	"williamboman/mason.nvim",
 	"nvim-neotest/nvim-nio",
 	"julianolf/nvim-dap-lldb",
-	"wojciech-kulik/xcodebuild.nvim"
+	"wojciech-kulik/xcodebuild.nvim",
+	"neotest"
     },
     event = "VeryLazy",
     config = function ()
@@ -30,11 +31,11 @@ return {
 	vim.keymap.set("n", "<C-5>", dap.step_back)
 	vim.keymap.set("n", "<C-0>", dap.restart)
 
-	dap.listeners.before.attach.dapui_config = function() 
+	dap.listeners.before.attach.dapui_config = function()
 	    ui.open()
 	end
 
-	dap.listeners.before.launch.dapui_config = function() 
+	dap.listeners.before.launch.dapui_config = function()
 	    ui.open()
 	end
 
@@ -42,13 +43,34 @@ return {
 	    ui.close()
 	end
 
-	dap.listeners.before.event_exited.dapui_config = function() 
+	dap.listeners.before.event_exited.dapui_config = function()
 	    ui.close()
 	end
 
 	local xcodebuild = require('xcodebuild.integrations.dap')
 	local codelldbPath = os.getenv("HOME") .. "/tools/dap/codelldb/extension/adapter/codelldb"
 	xcodebuild.setup(codelldbPath)
+	if not dap.adapters.lldb then
+            local xcode_path = vim.fn.trim(vim.fn.system("xcode-select -p"))
+            dap.adapters.lldb = {
+                type = "executable",
+                command = xcode_path .. "/usr/bin/lldb-dap",
+                name = "lldb",
+            }
+        end
+
+        dap.configurations.swift = {
+            {
+                name = "Launch file",
+                type = "lldb",
+                request = "launch",
+                program = function()
+                    return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+                end,
+                cwd = "${workspaceFolder}",
+                stopOnEntry = false,
+            },
+        }
 
 	vim.keymap.set("n", "<leader>dd", xcodebuild.build_and_debug, { desc = "Build & Debug" })
 	vim.keymap.set("n", "<leader>dr", xcodebuild.debug_without_build, { desc = "Debug Without Building" })

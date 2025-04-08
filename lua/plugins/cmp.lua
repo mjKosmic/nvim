@@ -139,14 +139,14 @@ config = function()
 		-- end
 	 --    end, { 'i', 's' }),
 	    
-	    ["<Tab>"] = cmp.mapping(function(original)
+	    ["<C-l>"] = cmp.mapping(function(original)
 		if luasnip.expand_or_jumpable() then
 		    luasnip.expand_or_jump()
 		else
 		    original()
 		end
 	    end, {"i", "s"}),
-	    ["<S-Tab>"] = cmp.mapping(function(original)
+	    ["<C-h>"] = cmp.mapping(function(original)
 		if luasnip.expand_or_jumpable() then
 		    luasnip.jump(-1)
 		else
