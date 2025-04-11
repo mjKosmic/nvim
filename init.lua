@@ -8,9 +8,14 @@ require('keybinds')
 
 vim.lsp.enable(
   {
-	'luals',
-	'rust-analyzer',
-	'clangd',
-	'sourcekit'
+    'luals',
+    'rust-analyzer',
+    'clangd',
+    'sourcekit'
   }
 )
+
+vim.diagnostic.config({
+    virtual_lines = { current_line = true }
+})
+

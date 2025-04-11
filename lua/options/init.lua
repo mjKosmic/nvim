@@ -42,6 +42,9 @@ vim.opt.cursorline = true
 -- Show the good practice line limit
 vim.opt.colorcolumn = "200"
 
+-- Floating window borders
+-- vim.opt.winborder = "rounded"
+
 -- Misc options
 vim.opt.title = true
 vim.opt.cmdheight = 1
