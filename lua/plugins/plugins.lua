@@ -9,7 +9,7 @@ return {
   require('plugins.gitsigns'),
   require('plugins.comment'),
   require('plugins.sleuth'),
-  require('plugins.cmp'),
+  -- require('plugins.cmp'),
   require('plugins.mason'),
   require('plugins.xcodebuild'),
   require('plugins.dap'),

@@ -5,6 +5,8 @@ require('plugins')
 require('commands')
 require('options')
 require('keybinds')
+require('completion')
+require('diagnostic')
 
 vim.lsp.enable(
   {

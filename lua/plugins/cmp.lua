@@ -72,7 +72,7 @@ config = function()
 		    cmp.config.compare.exact,
 		    cmp.config.compare.scopes,
 		    -- Custom comparator to rank our preferred LSP entry kinds 
-		    function(entry1, entry2) 
+		    function(entry1, entry2)
 			local kind1 = preferred_kinds[kind_mapper[entry1:get_kind()]] or 100
 			local kind2 = preferred_kinds[kind_mapper[entry2:get_kind()]] or 100
 
@@ -85,7 +85,7 @@ config = function()
 
 	formatting = {
 	    -- Truncate completion options to 50 characters to avoid excessively wide completion windows
-	    format = function(entry, vim_item) 
+	    format = function(entry, vim_item)
 		vim_item.abbr = string.sub(vim_item.abbr, 1, 40)
 		return vim_item
 	    end
@@ -138,7 +138,7 @@ config = function()
 		--     luasnip.jump(-1)
 		-- end
 	 --    end, { 'i', 's' }),
-	    
+
 	    ["<C-l>"] = cmp.mapping(function(original)
 		if luasnip.expand_or_jumpable() then
 		    luasnip.expand_or_jump()
