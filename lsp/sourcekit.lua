@@ -8,6 +8,9 @@ return {
             didChangeWatchedFiles = {
                 dynamicRegistration = true,
             },
+            symbol = {
+                dynamicRegistration = true
+            }
         },
         textDocument = {
             rangeFormatting = {

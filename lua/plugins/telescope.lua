@@ -1,9 +1,17 @@
 return {
-    'nvim-telescope/telescope.nvim', tag = '0.1.6',
+    'nvim-telescope/telescope.nvim',
+    -- tag = '0.1.8',
     priority = 900,
     dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function()
-    end
+    opts = {
+	defaults = {
+	    layout_strategy = 'center',
+	    layout_config = {
+		preview_cutoff = 10,
+	    },
+	    sorting_strategy = 'ascending'
+	}
+    }
 }
 
 
