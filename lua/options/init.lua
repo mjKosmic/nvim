@@ -43,7 +43,7 @@ vim.opt.cursorline = true
 vim.opt.colorcolumn = "200"
 
 -- Floating window borders
--- vim.opt.winborder = "rounded"
+vim.opt.winborder = "rounded"
 
 -- Misc options
 vim.opt.title = true

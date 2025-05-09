@@ -9,7 +9,8 @@ return {
 	    layout_config = {
 		preview_cutoff = 10,
 	    },
-	    sorting_strategy = 'ascending'
+	    sorting_strategy = 'ascending',
+	    border = false
 	}
     }
 }

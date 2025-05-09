@@ -1,4 +1,4 @@
-local configureTokyoNight = function(style) 
+local configureTokyoNight = function(style)
     require("tokyonight").setup({
 	-- your configuration comes here
 	-- or leave it empty to use the default settings
@@ -74,8 +74,11 @@ return {
   lazy = false,
   priority = 1000,
   config = function (_, opts)
-      require("citruszest").setup(opts)
+      local citrus = require("citruszest")
+      citrus.setup(opts)
       vim.cmd("colorscheme citruszest")
+      vim.cmd("hi PmenuSel guibg=#404040 guifg=#FFAA54 gui=bold")
+      vim.cmd("hi Pmenu guibg=#232323 guifg=white")
   end
 }
 
