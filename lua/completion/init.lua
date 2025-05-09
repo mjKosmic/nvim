@@ -1,7 +1,8 @@
 -- Works best with completeopt=noselect.
 -- Use CTRL-Y to select an item. |complete_CTRL-Y|
 vim.cmd[[set completeopt+=menuone,noselect,preview,fuzzy]]
--- local triggers = {'.'}
+
+vim.keymap.set("i", "<C-Space>", "<C-X><C-O>", { desc = "Trigger Auto-complete" })
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = 'lsp_command_group',
@@ -15,3 +16,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
     })
   end
 })
+
+

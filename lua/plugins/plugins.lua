@@ -8,7 +8,7 @@ return {
   require('plugins.whichkey'),
   require('plugins.gitsigns'),
   require('plugins.comment'),
-  require('plugins.sleuth'),
+  -- require('plugins.sleuth'),
   -- require('plugins.cmp'),
   require('plugins.mason'),
   require('plugins.xcodebuild'),
