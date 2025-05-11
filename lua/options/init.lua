@@ -45,6 +45,9 @@ vim.opt.colorcolumn = "200"
 -- Floating window borders
 vim.opt.winborder = "rounded"
 
+-- Popup window max dimensions
+vim.opt.pumheight = 10
+
 -- Misc options
 vim.opt.title = true
 vim.opt.cmdheight = 1

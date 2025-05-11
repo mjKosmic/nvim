@@ -1,9 +1,13 @@
 -- Works best with completeopt=noselect.
 -- Use CTRL-Y to select an item. |complete_CTRL-Y|
-vim.cmd[[set completeopt+=menuone,noselect,preview,fuzzy]]
+vim.cmd("set completeopt=menuone,noselect,preview,fuzzy")
 
-vim.keymap.set("i", "<C-Space>", "<C-X><C-O>", { desc = "Trigger Auto-complete" })
+-- Custom-triggered completions
+ vim.keymap.set('i', '<C-space>', function()
+   vim.lsp.completion.get()
+ end)
 
+-- LSP-driven Autocompletion
 vim.api.nvim_create_autocmd('LspAttach', {
   group = 'lsp_command_group',
   callback = function(args)
@@ -11,25 +15,26 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.lsp.completion.enable(true, client.id, args.buf, {
       autotrigger = true,
       convert = function(item)
-        -- return { abbr = item.label:gsub('%b()', '') }
 	local info = ""
 	if item.documentation then
 	    info = item.documentation.value or ""
 	end
+	local strings = require("plenary.strings")
+	local abbr = strings.truncate(item.label, 30, "...", nil)
         return {
 	    word = item.label,
-	    abbr = item.label .. "\t\t\t\t\t",
+	    abbr = abbr .. "\t\t",
 	    menu = "",
 	    info = info,
-	    abbr_hlgroup = fgHighlightGroupForKind(item.kind),
-	    kind_hlgroup = fgHighlightGroupForKind(item.kind)
+	    abbr_hlgroup = highlightGroupForLSPItemKind(item.kind),
+	    kind_hlgroup = highlightGroupForLSPItemKind(item.kind)
 	}
       end,
     })
   end
 })
 
-function fgHighlightGroupForKind(kind)
+function highlightGroupForLSPItemKind(kind)
     if kind == 1 then --Plain Text
 	return "CmpItemKindText"
     elseif kind == 2 then -- Method
