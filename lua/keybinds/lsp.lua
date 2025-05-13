@@ -51,6 +51,24 @@ return {
 
         vim.keymap.set({'n','v'}, '<C-f>', vim.lsp.buf.format, { buffer = event.buf, desc = 'LSP: Format' })
 
+	vim.keymap.set('i', '<Tab>', function()
+	    return vim.fn.pumvisible() == 1 and "<Down>" or "<Tab>"
+	end, { expr = true })
+
+	vim.keymap.set('i', '<C-j>', function()
+	    return vim.fn.pumvisible() == 1 and "<Down>" or "<Tab>"
+	end, { expr = true })
+
+	vim.keymap.set('i', '<C-k>', function()
+	    return vim.fn.pumvisible() == 1 and "<Up>" or "<Tab>"
+	end, { expr = true })
+
+	-- map Escape to <C-e> for completion menus so it removes any inserted text 
+	-- if we haven't officially confirmed the selection yet
+	vim.keymap.set('i', '<Esc>', function()
+	    return vim.fn.pumvisible() == 1 and "<C-e>" or "<Esc>"
+	end, { expr = true })
+
         -- The following two autocommands are used to highlight references of the
         -- word under your cursor when your cursor rests there for a little while.
         --    See `:help CursorHold` for information about when this is executed

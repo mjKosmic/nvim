@@ -1,6 +1,6 @@
 -- Works best with completeopt=noselect.
 -- Use CTRL-Y to select an item. |complete_CTRL-Y|
-vim.cmd("set completeopt=menuone,noselect,preview,fuzzy")
+vim.cmd("set completeopt=menuone,noinsert,noselect,preview,fuzzy,popup")
 
 -- Custom-triggered completions
  vim.keymap.set('i', '<C-space>', function()
@@ -15,14 +15,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.lsp.completion.enable(true, client.id, args.buf, {
       autotrigger = true,
       convert = function(item)
-	local info = ""
-	if item.documentation then
-	    info = item.documentation.value or ""
-	end
 	local strings = require("plenary.strings")
 	local abbr = strings.truncate(item.label, 30, "...", nil)
+	local info = ""
+	if string.len(abbr) < string.len(item.insertText) then
+	    info = info .. item.label .. "\n\n"
+	end
+	if item.documentation then
+	    info = info .. (item.documentation.value or "")
+	end
+
         return {
-	    word = item.label,
+	    word = item.insertText,
 	    abbr = abbr .. "\t\t",
 	    menu = "",
 	    info = info,
