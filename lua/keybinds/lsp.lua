@@ -55,6 +55,10 @@ return {
 	    return vim.fn.pumvisible() == 1 and "<Down>" or "<Tab>"
 	end, { expr = true })
 
+	vim.keymap.set('i', '<S-Tab>', function()
+	    return vim.fn.pumvisible() == 1 and "<Up>" or "<S-Tab>"
+	end, { expr = true })
+
 	vim.keymap.set('i', '<C-j>', function()
 	    return vim.fn.pumvisible() == 1 and "<Down>" or "<Tab>"
 	end, { expr = true })
