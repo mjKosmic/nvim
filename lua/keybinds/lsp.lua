@@ -73,6 +73,14 @@ return {
 	    return vim.fn.pumvisible() == 1 and "<C-e>" or "<Esc>"
 	end, { expr = true })
 
+	vim.keymap.set('i', "<C-l>", function()
+	    return vim.snippet.jump(1)
+	end, { expr = true })
+
+	vim.keymap.set('i', "<C-h>", function()
+	    return vim.snippet.jump(-1)
+	end, { expr = true })
+
         -- The following two autocommands are used to highlight references of the
         -- word under your cursor when your cursor rests there for a little while.
         --    See `:help CursorHold` for information about when this is executed

@@ -16,9 +16,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
       autotrigger = true,
       convert = function(item)
 	local strings = require("plenary.strings")
-	local abbr = strings.truncate(item.label, 30, "...", nil)
+	local abbr = strings.truncate(item.insertText or item.label, 30, "...", nil)
 	local info = ""
-	if string.len(abbr) < string.len(item.insertText) then
+	if string.len(abbr) < string.len(item.insertText or item.label) then
 	    info = info .. item.label .. "\n\n"
 	end
 	if item.documentation then
