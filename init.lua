@@ -13,7 +13,8 @@ vim.lsp.enable(
     'luals',
     'rust-analyzer',
     'clangd',
-    'sourcekit'
+    'sourcekit',
+    'zls'
   }
 )
 
