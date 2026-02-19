@@ -14,7 +14,8 @@ vim.lsp.enable(
     'rust-analyzer',
     'clangd',
     'sourcekit',
-    'zls'
+    'zls',
+    'jdtls'
   }
 )
 
