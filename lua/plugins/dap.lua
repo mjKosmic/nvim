@@ -48,16 +48,16 @@ return {
 	end
 
 	local xcodebuild = require('xcodebuild.integrations.dap')
-	local codelldbPath = os.getenv("HOME") .. "/tools/dap/codelldb/extension/adapter/codelldb"
-	xcodebuild.setup(codelldbPath)
-	if not dap.adapters.lldb then
-            local xcode_path = vim.fn.trim(vim.fn.system("xcode-select -p"))
-            dap.adapters.lldb = {
-                type = "executable",
-                command = xcode_path .. "/usr/bin/lldb-dap",
-                name = "lldb",
-            }
-        end
+	-- local codelldbPath = os.getenv("HOME") .. "/tools/dap/codelldb/extension/adapter/codelldb"
+	-- xcodebuild.setup(codelldbPath)
+	-- if not dap.adapters.lldb then
+ --            local xcode_path = vim.fn.trim(vim.fn.system("xcode-select -p"))
+ --            dap.adapters.lldb = {
+ --                type = "executable",
+ --                command = xcode_path .. "/usr/bin/lldb-dap",
+ --                name = "lldb",
+ --            }
+ --        end
 
         dap.configurations.swift = {
             {
